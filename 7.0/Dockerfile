@@ -23,5 +23,5 @@ RUN rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 RUN ln -s /etc/nginx/sites-available/owncloud /etc/nginx/sites-enabled/owncloud
 RUN chmod +x /start.sh
 
-VOLUME ["/var/www/owncloud/config", "/etc/nginx/sites-available"]
+VOLUME ["/var/www/owncloud/config", "/etc/nginx/sites-available", "/etc/ssl/nginx"]
 CMD ["/start.sh"]
