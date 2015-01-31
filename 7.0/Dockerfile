@@ -4,7 +4,7 @@ MAINTAINER Alexander Johnson <alex@cldfzn.com>
 ENV OWNCLOUD_VERSION 7.0.4
 
 RUN apt-get  update && \
-    apt-get -y install php5-fpm php5-gd php5-json php5-curl php5-sqlite php5-intl php5-mcrypt php5-imagick php5-apcu smbclient curl && \
+    apt-get -y install php5-fpm php5-gd php5-json php5-curl php5-sqlite php5-intl php5-mcrypt php5-imagick php5-apcu php5-cli smbclient curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
