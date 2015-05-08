@@ -11,8 +11,6 @@ RUN apt-get  update && \
 RUN curl -k https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 | tar jx -C /var/www/ && \
     chown -R www-data:www-data /var/www/owncloud
 
-COPY owncloud-key.pem /etc/ssl/nginx/owncloud-key.pem
-COPY owncloud-cert.pem /etc/ssl/nginx/owncloud-cert.pem
 COPY fpm.conf /etc/nginx/conf.d/fpm.conf
 # Update max post size and max file size
 COPY php.ini /etc/php5/fpm/php.ini
