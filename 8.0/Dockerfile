@@ -1,7 +1,7 @@
 FROM cldfzn/nginx
 MAINTAINER Alexander Johnson <alex@cldfzn.com>
 
-ENV OWNCLOUD_VERSION 8.0.2
+ENV OWNCLOUD_VERSION 8.0.3
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys E5267A6C && \
     echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/php.list && \
     apt-get update && \
