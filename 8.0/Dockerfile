@@ -14,10 +14,10 @@ RUN mkdir /var/www && \
 
 COPY fpm.conf /etc/nginx/conf.d/fpm.conf
 # Update max post size and max file size
-COPY php.ini /etc/php5/fpm/php.ini
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY owncloud.conf /etc/nginx/conf.d/owncloud.conf
-RUN sed -i 's/^;always_populate_raw_post_data.*/always_populate_raw_post_data = -1/' /etc/php5/cli/php.ini
+RUN sed -i 's/^post_max_size.*/post_max_size = 513M/' /etc/php5/fpm/php.ini
+RUN sed -i 's/^upload_max_filesize.*/upload_max_filesize = 512M/' /etc/php5/fpm/php.ini
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
