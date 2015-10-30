@@ -26,5 +26,5 @@ RUN mkdir /files && \
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-VOLUME ["/etc/nginx/conf.d", "/etc/ssl/nginx"]
+VOLUME ["/var/www/owncloud/config", "/etc/nginx/conf.d", "/etc/ssl/nginx"]
 CMD ["/start.sh"]
