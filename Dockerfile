@@ -1,7 +1,7 @@
-FROM nginx:1.9
+FROM nginx:1.9.11
 MAINTAINER Alexander Johnson <alex@cldfzn.com>
 
-ENV OWNCLOUD_VERSION 8.2.1
+ENV OWNCLOUD_VERSION 8.2.2
 
 RUN apt-get update && \
     apt-get -y install php5-fpm php5-gd php5-json php5-curl php5-sqlite php5-intl php5-mcrypt php5-imagick php5-mysql php5-redis smbclient curl bzip2 && \
