@@ -2,8 +2,8 @@ FROM nginx:stable
 MAINTAINER Alexander Johnson <alex@cldfzn.com>
 
 ENV OWNCLOUD_HOSTNAME owncloud.example.com
-ENV OWNCLOUD_SSL_CERT /etc/ssl/nginx/owncloud-key.pem
-ENV OWNCLOUD_SSL_KEY /etc/ssl/nginx/owncloud-cert.pem
+ENV OWNCLOUD_SSL_CERT /etc/ssl/nginx/owncloud-cert.pem
+ENV OWNCLOUD_SSL_KEY /etc/ssl/nginx/owncloud-key.pem
 
 COPY start.sh /start.sh
 COPY fpm.conf /etc/nginx/conf.d/fpm.conf
