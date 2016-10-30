@@ -7,5 +7,7 @@ if [ -d "/files" ]; then
     rm -rf /files
 fi
 
+envsubst '${OWNCLOUD_HOSTNAME} ${OWNCLOUD_SSL_CERT} ${OWNCLOUD_SSL_KEY}' < /etc/nginx/conf.d/owncloud.conf > /etc/nginx/conf.d/owncloud.conf
+
 /etc/init.d/php5-fpm start
 nginx -g "daemon off;"
