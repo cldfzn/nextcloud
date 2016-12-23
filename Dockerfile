@@ -22,7 +22,7 @@ RUN sed -i 's/^post_max_size.*/post_max_size = 513M/' /etc/php5/fpm/php.ini && \
     sed -i 's/^;always_populate_raw_post_data.*/always_populate_raw_post_data = -1/' /etc/php5/fpm/php.ini && \
     sed -i 's/^;env\[PATH\]/env[PATH]/' /etc/php5/fpm/pool.d/www.conf
 
-ENV OWNCLOUD_VERSION 10.0.1
+ENV OWNCLOUD_VERSION 11.0.0
 
 RUN mkdir /var/www && \
     curl -k https://download.nextcloud.com/server/releases/nextcloud-${OWNCLOUD_VERSION}.tar.bz2 | tar jx -C /var/www/ && \
