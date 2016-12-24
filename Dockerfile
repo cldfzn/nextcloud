@@ -22,10 +22,18 @@ RUN sed -i 's/^post_max_size.*/post_max_size = 513M/' /etc/php5/fpm/php.ini && \
     sed -i 's/^;always_populate_raw_post_data.*/always_populate_raw_post_data = -1/' /etc/php5/fpm/php.ini && \
     sed -i 's/^;env\[PATH\]/env[PATH]/' /etc/php5/fpm/pool.d/www.conf
 
-ENV OWNCLOUD_VERSION 11.0.0
+ENV NEXTCLOUD_VERSION 11.0.0
 
-RUN mkdir /var/www && \
-    curl -k https://download.nextcloud.com/server/releases/nextcloud-${OWNCLOUD_VERSION}.tar.bz2 | tar jx -C /var/www/ && \
+RUN curl -fsSL -o nextcloud.tar.bz2 "https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2" && \
+    curl -fsSL -o nextcloud.tar.bz2.asc "https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2.asc" && \
+    export GNUPGHOME="$(mktemp -d)" && \
+    # gpg key from https://nextcloud.com/nextcloud.asc
+    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 28806A878AE423A28372792ED75899B9A724937A && \
+    gpg --batch --verify nextcloud.tar.bz2.asc nextcloud.tar.bz2 && \
+    rm -r "$GNUPGHOME" nextcloud.tar.bz2.asc && \
+    mkdir -p /var/www && \
+    tar -xjf nextcloud.tar.bz2 -C /var/www/ && \
+    rm nextcloud.tar.bz2 && \
     mv /var/www/nextcloud /var/www/owncloud && \
     chown -R www-data:www-data /var/www/owncloud && \
     mkdir /files && \
